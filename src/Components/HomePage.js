@@ -1,13 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from "@material-ui/styles";
+import MarsComponent from "./MarsComponent";
+import HeaderComponent from "./HeaderComponent";
+// import {
+//   TwitterTimelineEmbed,
+//   TwitterShareButton,
+//   TwitterFollowButton,
+//   TwitterHashtagButton,
+//   TwitterMentionButton,
+//   TwitterTweetEmbed,
+//   TwitterMomentShare,
+//   TwitterDMButton,
+//   TwitterVideoEmbed,
+//   TwitterOnAirButton
+// } from "react-twitter-embed";
+
+// import { findByLabelText } from "@testing-library/react";
 // import { nasaApiKey } from "../nasaApiKey";
 
 const HomePage = () => {
   const [post, setPost] = useState({
     title: "",
     url: "",
-    explanation: ''
+    explanation: ""
   });
   const classes = useStyles();
 
@@ -19,29 +35,66 @@ const HomePage = () => {
       .then(res => setPost(res.data))
       .catch(err => console.log(err));
   }, []);
-  console.log(post);
-  console.log(post.title);
-  console.log(post.url);
+
+  // console.log(post);
+  // console.log(post.title);
+  // console.log(post.url);
 
   return (
     <div>
-      <div>Daily Space Img</div>
-      <div>{post.title}</div>
-      <div>
-          <img src={post.url} alt='' className={classes.dailyImage}/>
+      <HeaderComponent />
+      <div className={classes.headerPage}>
+        <div className={classes.dailyImageDiv}>
+          <div>Daily Space Img</div>
+          <div>{post.title}</div>
+          <div>
+            <img src={post.url} alt="" className={classes.dailyImage} />
+          </div>
+          <div className={classes.dailyImageInfo}>{post.explanation}</div>
+        </div>
+        <div className={classes.twitterSpaceFeed}>
+          <div>Twitter Feed</div>
+          <div>
+            <a
+              class="twitter-timeline"
+              data-theme="dark"
+              href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
+              className={classes.twitterFeed}
+            >
+              Tweets by NASA
+            </a>
+          </div>
+        </div>
       </div>
-      <div>
-          {post.explanation}
-      </div>
+      <MarsComponent />
     </div>
   );
 };
 
 const useStyles = makeStyles({
-    dailyImage: {
-        height: '25%',
-        width: '25%'
-    }
-})
+  dailyImage: {
+    height: "100%",
+    width: "75%"
+  },
+  dailyImageInfo: {
+    width: "50%"
+  },
+  dailyImageDiv: {
+    display: "flex",
+    justifyItems: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    height: "100%",
+    width: "50%",
+    backgroundColor: "blue"
+  },
+  headerPage: {
+    display: "flex"
+  },
+  twitterFeed: {
+    height: '100%',
+    width: '100%'
+  }
+});
 
 export default HomePage;

@@ -14,17 +14,19 @@ const MarsComponent = () => {
       useEffect(() => {
         axios
           .get(
-            "https://api.nasa.gov/planetary/apod?api_key=e21GCEXAJL0w8X1OH5hL7ZMOu8U2110NkpBx4bA9"
+            "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0"
           )
           .then(res => setPost(res.data))
           .catch(err => console.log(err));
       }, []);
 
+      console.log(post)
+
 
 
   return (
-      <div>
-          This is the Mars Exploration
+      <div className={classes.mars}>
+          MARS
           <div>
               This is the Mars Exploration
           </div>
@@ -39,8 +41,8 @@ const MarsComponent = () => {
 };
 
 const useStyles = makeStyles({
-  headerPage: {
-    display: "flex"
+  mars: {
+    height: '100%'
   }
 });
 

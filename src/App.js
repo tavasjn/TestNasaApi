@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
 
 
+
 // what to import for routes //
 import HomePage from './Components/HomePage';
 
@@ -11,7 +12,7 @@ import HomePage from './Components/HomePage';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <HashRouter>
         <Route exact path="/" component={HomePage} />
       </HashRouter>

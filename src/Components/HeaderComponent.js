@@ -1,22 +1,19 @@
-import React from "react";
-import { makeStyles } from "@material-ui/styles";
+import React, { Component } from 'react';
+import '../App.css';
 
-const HeaderComponent = () => {
-  const classes = useStyles();
-
-  return(
-      <div>
-          <div>
-              Nasa 
-          </div>
-      </div>
-  );
-};
-
-const useStyles = makeStyles({
-  headerPage: {
-    display: "flex"
-  }
-});
+class HeaderComponent extends Component {
+    render(){
+        return(
+            <div className="header">
+                <div>
+                    Logo Here
+                </div>
+                <div>
+                    NASA
+                </div>
+            </div>
+        )
+    }
+}
 
 export default HeaderComponent;
